@@ -5,7 +5,7 @@ kind: ClusterConfig
 metadata:
   name: devaney-enterprises
   region: us-east-2
-  version: "1.19"
+  version: "1.20"
 
 privateCluster:
     enabled: false
