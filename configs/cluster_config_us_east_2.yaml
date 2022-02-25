@@ -3,7 +3,7 @@ apiVersion: eksctl.io/v1alpha5
 kind: ClusterConfig
 
 metadata:
-  name: devaney-enterprises
+  name: devaney-enterprises-us-east-2
   region: us-east-2
   version: "1.20"
 
@@ -53,7 +53,7 @@ managedNodeGroups:
   instanceSelector: {}
   instanceType: t3.small
   labels:
-    alpha.eksctl.io/cluster-name: devaney-enterprises
+    alpha.eksctl.io/cluster-name: devaney-enterprises-us-east-2
     alpha.eksctl.io/nodegroup-name: us-east-2-managed-node-group
   minSize: 1
   maxSize: 2
@@ -82,7 +82,7 @@ managedNodeGroups:
       imageBuilder: true
       xRay: true
 
-- name: us-east-2worker-node-group
+- name: us-east-2-worker-node-group
   privateNetworking: true
   releaseVersion: ""
   securityGroups:
@@ -94,7 +94,7 @@ managedNodeGroups:
   instanceSelector: {}
   instanceType: t3.small
   labels:
-    alpha.eksctl.io/cluster-name: devaney-enterprises
+    alpha.eksctl.io/cluster-name: devaney-enterprises-us-east-2
     alpha.eksctl.io/nodegroup-name: us-east-2-worker-node-group
   minSize: 1
   maxSize: 2
