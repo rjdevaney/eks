@@ -1,0 +1,129 @@
+---
+apiVersion: eksctl.io/v1alpha5
+kind: ClusterConfig
+
+metadata:
+  name: devaney-enterprises
+  region: us-east-2
+  version: "1.19"
+
+privateCluster:
+    enabled: false
+    skipEndpointCreation: false
+vpc:
+    autoAllocateIPv6: false
+    cidr: 192.168.0.0/16
+    clusterEndpoints:
+      privateAccess: false
+      publicAccess: true
+    manageSharedNodeSecurityGroupRules: true
+    nat:
+      gateway: Single
+
+availabilityZones: ["us-east-2a", "us-east-2b", "us-east-2c"]
+
+iam:
+  withOIDC: true
+  serviceAccounts:
+  - metadata:
+      name: iam-test
+      namespace: default
+      labels: {aws-usage: "application"}
+    attachPolicyARNs:
+      - "arn:aws:iam::aws:policy/AmazonS3ReadOnlyAccess"
+    wellKnownPolicies:
+      autoScaler: false
+      awsLoadBalancerController: false
+      certManager: false
+      ebsCSIController: false
+      efsCSIController: false
+      externalDNS: false
+      imageBuilder: false
+
+managedNodeGroups:
+- name: us-east-2-managed-node-group
+  privateNetworking: true
+  releaseVersion: ""
+  securityGroups:
+    withLocal: null
+    withShared: null
+  desiredCapacity: 1
+  disableIMDSv1: false
+  disablePodIMDS: false
+  instanceSelector: {}
+  instanceType: t3.small
+  labels:
+    alpha.eksctl.io/cluster-name: devaney-enterprises
+    alpha.eksctl.io/nodegroup-name: us-east-2-managed-node-group
+  minSize: 1
+  maxSize: 2
+  volumeSize: 12
+  volumeIOPS: 3000
+  volumeThroughput: 125
+  volumeType: gp3
+  tags:
+    alpha.eksctl.io/nodegroup-name: us-east-2-managed-node-group
+    alpha.eksctl.io/nodegroup-type: managed
+  ssh:
+    publicKeyPath: ~/.ssh/id_rsa.pub                                 
+  iam:
+    withAddonPolicies:
+      albIngress: true
+      appMesh: true
+      appMeshPreview: true
+      autoScaler: true
+      awsLoadBalancerController: true
+      certManager: true
+      cloudWatch: true
+      ebs: true
+      efs: true
+      externalDNS: true
+      fsx: true
+      imageBuilder: true
+      xRay: true
+
+- name: us-east-2worker-node-group
+  privateNetworking: true
+  releaseVersion: ""
+  securityGroups:
+    withLocal: null
+    withShared: null
+  desiredCapacity: 1
+  disableIMDSv1: false
+  disablePodIMDS: false
+  instanceSelector: {}
+  instanceType: t3.small
+  labels:
+    alpha.eksctl.io/cluster-name: devaney-enterprises
+    alpha.eksctl.io/nodegroup-name: us-east-2-worker-node-group
+  minSize: 1
+  maxSize: 2
+  volumeSize: 12
+  volumeIOPS: 3000
+  volumeThroughput: 125
+  volumeType: gp3
+  tags:
+    alpha.eksctl.io/nodegroup-name: us-east-2-worker-node-group
+    alpha.eksctl.io/nodegroup-type: managed
+  ssh:
+    publicKeyPath: ~/.ssh/id_rsa.pub                                 
+  iam:
+    withAddonPolicies:
+      albIngress: true
+      appMesh: true
+      appMeshPreview: true
+      autoScaler: true
+      awsLoadBalancerController: true
+      certManager: true
+      cloudWatch: true
+      ebs: true
+      efs: true
+      externalDNS: true
+      fsx: true
+      imageBuilder: true
+      xRay: true
+
+# To enable all of the control plane logs, uncomment below:
+cloudWatch:
+  clusterLogging:
+    enableTypes: ["*"]
