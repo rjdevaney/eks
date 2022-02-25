@@ -10,11 +10,49 @@ spec:
     targetRevision: HEAD
     path: chart
     helm: 
-      release: add-ons
+#      release: add-ons   - failes validation so i commented it out
       values: |
+        agones:
+          enable: true
+        appmesh-controller:
+          enable: true
+        argo-rollouts:
+          enable: true
+        aws-calico:
+          enable: true
+        aws-cloudwatch-metrics:
+          enable: true
+        aws-for-fluent-bit:
+          enable: true
+        aws-load-balancer-controller:
+          enable: true
+        aws-otel-collector:
+          enable: true
+        cert-manager:
+          enable: true
         cluster-autoscaler:
           enable: true
+        external-dns:
+          enable: true
+        gatekeeper:
+          enable: true
+        ingress-nginx:
+          enable: true
+        karpenter:
+          enable: true
+        keda:
+          enable: true
         metrics-server:
+          enable: true
+        prometheus:
+          enable: true
+        spark-operator:
+          enable: true
+        traefik:
+          enable: true
+        vpa:
+          enable: true
+        yunikorn:
           enable: true
   destination:
     server: https://kubernetes.default.svc
