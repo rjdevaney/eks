@@ -1,5 +1,11 @@
+#!/bin/bash
+#
 # https://argo-cd.readthedocs.io/en/stable/getting_started/
 # https://www.eksworkshop.com/intermediate/290_argocd/
+# Description: Installs argocd
+# Author: Rick Devaney
+# Date: February 26, 2022
+#
 
 # Install Argo CD
 kubectl create namespace argocd
