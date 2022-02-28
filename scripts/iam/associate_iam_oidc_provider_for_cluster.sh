@@ -7,13 +7,9 @@
 #
 
 if [[ $# -ne 1 ]]; then
-    echo 'Usage: ./create_iam_oidc_provider_for_cluster.sh <cluster name>'
-    echo 'i.e.   ./create_iam_oidc_provider_for_cluster.sh devaney-enterpises-us-east-2'
-    exit 0
-fi
-
-if [[ -z "$1" ]]; then
-    echo 'Usage: Please a cluster name'
+    echo 'Usage: ./associate_iam_oidc_provider_for_cluster.sh <cluster name>'
+    echo 'i.e.   ./associate_iam_oidc_provider_for_cluster.sh devaney-enterpises-us-east-2'
+    echo 'Please a cluster name'
     exit 0
 fi
 

@@ -47,7 +47,7 @@ managedNodeGroups:
   securityGroups:
     withLocal: null
     withShared: null
-  desiredCapacity: 1
+  desiredCapacity: 3
   disableIMDSv1: false
   disablePodIMDS: false
   instanceSelector: {}
@@ -55,8 +55,8 @@ managedNodeGroups:
   labels:
     alpha.eksctl.io/cluster-name: devaney-enterprises-us-west-2
     alpha.eksctl.io/nodegroup-name: us-west-2-managed-node-group
-  minSize: 1
-  maxSize: 2
+  minSize: 3
+  maxSize: 3
   volumeSize: 12
   volumeIOPS: 3000
   volumeThroughput: 125
@@ -88,7 +88,7 @@ managedNodeGroups:
   securityGroups:
     withLocal: null
     withShared: null
-  desiredCapacity: 1
+  desiredCapacity: 3
   disableIMDSv1: false
   disablePodIMDS: false
   instanceSelector: {}
@@ -96,8 +96,8 @@ managedNodeGroups:
   labels:
     alpha.eksctl.io/cluster-name: devaney-enterprises-us-west-2
     alpha.eksctl.io/nodegroup-name: us-west-2-worker-node-group
-  minSize: 1
-  maxSize: 2
+  minSize: 3
+  maxSize: 3
   volumeSize: 12
   volumeIOPS: 3000
   volumeThroughput: 125

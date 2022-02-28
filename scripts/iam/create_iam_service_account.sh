@@ -1,5 +1,14 @@
 #!/bin/bash
 #
+# https://docs.aws.amazon.com/eks/latest/userguide/iam-roles-for-service-accounts.html
+# Enable service accounts to access AWS resources in three steps
+# 1. Create an IAM OIDC provider for your cluster – You only need to do this once for a cluster.
+# https://docs.aws.amazon.com/eks/latest/userguide/enable-iam-roles-for-service-accounts.html
+# 2. Create an IAM role and attach an IAM policy to it with the permissions that your service accounts need – We recommend creating separate roles for each unique collection of permissions that pods need.
+# https://docs.aws.amazon.com/eks/latest/userguide/create-service-account-iam-policy-and-role.html
+# 3. Associate an IAM role with a service account – Complete this task for each Kubernetes service account that needs access to AWS resources.
+# https://docs.aws.amazon.com/eks/latest/userguide/specify-service-account-role.html
+#
 # Description: Creates an iam service account
 # Author: Rick Devaney
 # Date: February 25, 2022

@@ -38,3 +38,11 @@ aws configure get default.region
 # Use the https://docs.aws.amazon.com/cli/latest/reference/sts/get-caller-identity.html CLI command to validate that the Cloud9 IDE is using the correct IAM role.
 
 aws sts get-caller-identity --query Arn | grep $1 -q && echo "IAM role valid" || echo "IAM role NOT valid"
+
+# Update awscli. Upgrade AWS CLI according to guidance in (https://docs.aws.amazon.com/cli/latest/userguide/install-cliv2-linux.html).
+curl "https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip" -o "awscliv2.zip"
+unzip awscliv2.zip
+sudo ./aws/install
+
+# set up eksctl
+./setup_eksctl.sh
